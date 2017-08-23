@@ -1,0 +1,9 @@
+<h2>Facilities</h2>
+<div class="grid grid-pad">
+  <a *ngFor="let facility of facilities" [routerLink]="['/facility', facility.Id]" class="col-1-4">
+    <div class="module hero">
+      <h4>{{facility.Name}}</h4>
+      <h5>{{facility.TotalRevenue}}</h5>
+    </div>
+  </a>
+</div>

@@ -1,0 +1,32 @@
+<md-card>
+    <md-card-content>
+      <h3>Order Inventory</h3>
+      <md-input-container>
+        <input mdInput placeholder="Product" [mdAutocomplete]="auto" [formControl]="selectedProduct" [(ngModel)]="newProductName">
+      </md-input-container>
+  
+      <md-autocomplete #auto="mdAutocomplete">
+          <md-option *ngFor="let product of filteredProducts | async" [value]="product">
+              {{ product }}
+            </md-option>
+      </md-autocomplete>
+      <md-input-container>
+        <input type="number" OnlyNumber="true" mdInput placeholder="Quantity" [(ngModel)]="newProductQuantity">
+      </md-input-container>
+      <br/>
+      <button (click)="addProduct()">Add</button>
+      <button (click)="completeOrder()">Complete Sale</button>
+      <button (click)="close()">Cancel</button>
+      <h5>Products In Order</h5>
+      <!--todo put this back to the wrong property for orderItems which makes the navigation fail and do weird things-->
+      <md-grid-list cols="4" rowHeight="100px" class="list">
+        <md-grid-tile *ngFor="let orderItem of orderItems" [colspan]=1 [rowspan]=1 class="saleGridItem" (click)="navigateToSale(sale.Id)">
+          <div class="gridItemWrapper">
+            <div class="newLine">Product: {{orderItem.ProductName}}</div>
+            <div class="newLine">Quantity: {{orderItem.Quantity}}</div>
+          </div>
+        </md-grid-tile>
+      </md-grid-list>
+    </md-card-content>
+  </md-card>
+  <br/>

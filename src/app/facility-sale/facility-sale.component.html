@@ -1,0 +1,41 @@
+<md-card>
+  <md-card-content>
+
+    <h4>Sale for {{sale.CustomerName}}</h4>
+    <h4>Created: {{sale.CreatedDate | date}}</h4>
+
+
+    <md-input-container>
+      <input mdInput placeholder="Product" [mdAutocomplete]="auto" [formControl]="selectedProduct" [(ngModel)]="newProductName">
+    </md-input-container>
+
+    <md-autocomplete #auto="mdAutocomplete">
+      <md-option *ngFor="let product of filteredStates | async" [value]="product">
+        {{ product }}
+      </md-option>
+    </md-autocomplete>
+    <md-input-container>
+      <input type="number" OnlyNumber="true" mdInput placeholder="Quantity" [(ngModel)]="newProductQuantity">
+    </md-input-container>
+    <br/>
+    <md-input-container>
+      <textarea mdInput placeholder="Notes" [(ngModel)]="newProductNotes"></textarea>
+    </md-input-container>
+
+    <br/>
+    <button (click)="addProduct()">Add</button>
+    <button (click)="completeSale()">Complete Sale</button>
+    <button (click)="close()">Close</button>
+
+    <md-grid-list cols="4" rowHeight="100px" class="list">
+      <md-grid-tile *ngFor="let saleItem of sale.FacilitySaleItems" [colspan]=1 [rowspan]=1 class="saleGridItem" (click)="navigateToSale(sale.Id)">
+        <div class="gridItemWrapper">
+          <div class="newLine">Product: {{saleItem.FacilityInventoryItemType.Name}}</div>
+          <div class="newLine">Quantity: {{saleItem.Quantity}}</div>
+          <div class="newLine">Notes: {{saleItem.Notes}}</div>
+        </div>
+      </md-grid-tile>
+    </md-grid-list>
+  </md-card-content>
+</md-card>
+<br/>

@@ -1,0 +1,19 @@
+ <div *ngIf="item">
+    <div>
+        <label>id: </label>
+        <input [(ngModel)]="item.Id" placeholder="id"/>
+      </div>
+
+       <div><label>Name: </label>{{item.Name}}</div>
+      <div>
+        <label>name: </label>
+        <input [(ngModel)]="item.Name" placeholder="name"/>
+      </div>
+
+       <div><label>Sku: </label>{{item.Sku}}</div>
+      <div>
+        <label>Sku: </label>
+        <input [(ngModel)]="item.Sku" placeholder="sku"/>
+      </div>
+      <button (click)="goBack()">Back</button>
+</div>

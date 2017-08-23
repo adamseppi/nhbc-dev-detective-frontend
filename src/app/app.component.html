@@ -1,0 +1,20 @@
+<md-sidenav-container class="container">
+  <md-sidenav   mode="push" #sidenav class="sidenav">
+    <ul>
+      <li><a md-button color="primary" routerLink="/dashboard">Dashboard</a></li>
+      <li><a md-button color="primary" routerLink="/login">Login</a></li>
+      <li (click)="logout();"><a md-button color="primary" routerLink="">Logout</a></li>
+       
+    </ul>
+  </md-sidenav>
+  <div class="appContainer">
+    <md-toolbar color="primary">
+      <button md-icon-button (click)="sidenav.open()">
+        <md-icon>menu</md-icon>
+      </button>
+      <span color="accent">Serpentine Hollow</span> 
+    </md-toolbar>
+    
+    <router-outlet></router-outlet>
+  </div>
+</md-sidenav-container>
